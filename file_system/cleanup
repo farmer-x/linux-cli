@@ -1,0 +1,28 @@
+
+<path> - abosolute path to a file or directory with a leading and trailing /
+<user> - a user name/id
+
+Remove files in directory of a certain age (days) or older:
+sudo find <path> -type f  -mtime +<days> -exec rm '{}' \;
+ie: sudo find /tmp/ -type f  -mtime +365 -exec rm '{}' \;
+
+Remove files owned by a specific user
+sudo find <path> -user <user> -delete
+
+Remove a file with a name
+sudo find <path> -name "<name>" -type f
+ie: sudo find . -name "log" -type f 
+
+Clear the contents of a single file without deleting it to prevent interruption
+	sudo cat /dev/null > /dir/nameoflogfile
+
+Delete contents of a directory
+	sudo rm -r <path>*
+
+Remove everything in the current directory
+	sudo rm -r 
+
+
+
+
+
