@@ -1,0 +1,33 @@
+Disk usage sorted by 
+	sudo du -h --max-depth 2 * | sort -hr
+
+
+Drill into the directory you find to be using the most disk space, to see specifically where that use is largest.  In the following example, there were a series of "sifter" commands run, starting at /opt, then opt/tivoli, etc.
+	sudo sifter "the/directory/you/want" | head -15   
+	ie. sudo sifter /opt/tivoli/tsm/client | head -15
+
+	
+Disk usage
+  sudo du -sch <path>
+
+File System 
+Get the path which volume group It is related
+  df –h <path> 
+
+know the file system type.
+  df –T <path> 
+  
+Physical Volumes
+  sudo pvscan
+
+Adding Space
+Exetend the size of a phyiscal volume:
+  sudo lvextend  -L+<G>  <file system path>
+  ie: sudo levextend -L +10G /dev/mapper/vg01-lv_ltsdata
+  
+  now Resize
+  sudo resize2fs  /dev/mapper/vg01-lv_ltsdata
+  
+  OR all in one line (add -r)
+   sudo lvextend  -L+<G> -r <file system path>
+
